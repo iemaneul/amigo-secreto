@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amigo Secreto 2026</title>
+    <meta name="description" content="Sistema de sorteio do Amigo Secreto 2026" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <section id="authView" class="screen active">
+        <div class="auth-card">
+          <div class="brand-block">
+            <span class="brand-tag">Amigo Secreto 2026</span>
+            <h1>Bem-vindo ao sorteio</h1>
+            <p>Entre com seu celular e sua senha individual.</p>
+          </div>
+
+          <form id="loginForm" class="auth-form">
+            <label>
+              <span>Celular</span>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Ex.: 11999999999" required />
+            </label>
+
+            <label>
+              <span>Senha</span>
+              <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Sua senha" required />
+            </label>
+
+            <button type="submit" class="primary-button">Entrar</button>
+          </form>
+
+          <div id="authError" class="message error hidden" role="alert"></div>
+        </div>
+      </section>
+
+      <section id="appView" class="screen hidden">
+        <header class="topbar">
+          <div class="brand-mini">
+            <span class="brand-mark">🎁</span>
+            <div>
+              <strong>Amigo Secreto</strong>
+              <small>2026</small>
+            </div>
+          </div>
+
+          <div class="topbar-actions">
+            <button id="logoutBtn" class="ghost-button" type="button">
+              <i data-lucide="log-out"></i>
+              Sair
+            </button>
+          </div>
+        </header>
+
+        <main class="main-layout">
+          <aside class="sidebar">
+            <nav class="nav-list" aria-label="Menu principal">
+              <button class="nav-button active" data-panel="dashboardPanel" type="button">
+                <i data-lucide="home"></i>
+                Dashboard
+              </button>
+              <button class="nav-button" data-panel="profilePanel" type="button">
+                <i data-lucide="user-circle"></i>
+                Meu perfil
+              </button>
+            </nav>
+          </aside>
+
+          <section class="content-area">
+            <div id="dashboardPanel" class="panel active">
+              <div class="page-header">
+                <div>
+                  <p class="eyebrow">Dashboard</p>
+                  <h2 id="welcomeTitle">Olá, participante!</h2>
+                </div>
+              </div>
+
+              <div id="drawStatusCard" class="feature-card accent">
+                <div class="card-head">
+                  <span class="status-pill" id="drawStatusPill">Aguardando</span>
+                </div>
+
+                <div id="drawResultContent" class="secret-box">
+                  <p class="label">Seu amigo secreto</p>
+                  <div id="resultName" class="result-name">—</div>
+                  <button id="revealButton" class="primary-button" type="button">Revelar meu amigo secreto</button>
+                </div>
+              </div>
+
+              <div class="info-grid">
+                <article class="info-card">
+                  <div class="card-head">
+                    <span class="small-label">Conheça seu amigo secreto</span>
+                  </div>
+                  <div id="receiverProfile" class="profile-preview empty-state">
+                    Ainda não há dados disponíveis para exibir.
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div id="profilePanel" class="panel hidden">
+              <div class="page-header">
+                <div>
+                  <p class="eyebrow">Meu perfil</p>
+                  <h2>Atualize suas preferências</h2>
+                </div>
+              </div>
+
+              <form id="profileForm" class="profile-form">
+                <div class="field-grid">
+                  <label>
+                    <span>Cor favorita</span>
+                    <input id="favoriteColor" name="favoriteColor" type="text" placeholder="Ex.: ouro, azul, verde" />
+                  </label>
+
+                  <label>
+                    <span>Hobbies e interesses</span>
+                    <input id="hobbies" name="hobbies" type="text" placeholder="Ex.: música, café, trilhas" />
+                  </label>
+
+                  <label>
+                    <span>Comidas favoritas</span>
+                    <input id="favoriteFoods" name="favoriteFoods" type="text" placeholder="Ex.: sushi, lasanha, churrasco" />
+                  </label>
+
+                  <label>
+                    <span>Filmes e séries favoritos</span>
+                    <input id="favoriteMovies" name="favoriteMovies" type="text" placeholder="Ex.: Harry Potter, Dark" />
+                  </label>
+
+                  <label>
+                    <span>Jogos favoritos</span>
+                    <input id="favoriteGames" name="favoriteGames" type="text" placeholder="Ex.: FIFA, Zelda, Minecraft" />
+                  </label>
+
+                  <label>
+                    <span>Coisas que gosta</span>
+                    <input id="likes" name="likes" type="text" placeholder="Ex.: livros, lanches, tecnologia" />
+                  </label>
+
+                  <label>
+                    <span>Coisas que não gosta</span>
+                    <input id="dislikes" name="dislikes" type="text" placeholder="Ex.: doces de leite, frio, barulho" />
+                  </label>
+
+                  <label>
+                    <span>Sugestões de presentes</span>
+                    <input id="giftSuggestions" name="giftSuggestions" type="text" placeholder="Ex.: kit de café, livros, jogos" />
+                  </label>
+                </div>
+
+                <label class="full-width">
+                  <span>Observações adicionais</span>
+                  <textarea id="notes" name="notes" rows="5" placeholder="Compartilhe detalhes extras para a sua surpresa..."></textarea>
+                </label>
+
+                <div class="form-actions">
+                  <button type="submit" class="primary-button">Salvar alterações</button>
+                </div>
+              </form>
+
+              <div id="profileMessage" class="message hidden"></div>
+            </div>
+          </section>
+        </main>
+      </section>
+    </div>
+
+    <script type="module" src="./js/config.js"></script>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
