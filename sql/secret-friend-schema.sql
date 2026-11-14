@@ -240,16 +240,16 @@ security definer
 set search_path = pg_catalog, public, extensions, pg_temp
 as $$
 declare
-  participant_id uuid;
+  v_participant_id uuid;
 begin
   select p.id
-  into participant_id
+  into v_participant_id
   from public.participants p
   where p.phone_number = regexp_replace(coalesce(p_phone, ''), '[^0-9]', '', 'g')
     and p.password_hash is not null
     and crypt(coalesce(p_password, ''), p.password_hash) = p.password_hash;
 
-  if participant_id is null then
+  if v_participant_id is null then
     raise exception 'Credenciais inválidas.';
   end if;
 
