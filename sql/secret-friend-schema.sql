@@ -270,8 +270,7 @@ begin
     notes,
     updated_at
   )
-  values (
-    participant_id,
+  values (     v_participant_id,
     nullif(p_profile ->> 'favorite_color', ''),
     nullif(p_profile ->> 'hobbies', ''),
     nullif(p_profile ->> 'favorite_foods', ''),
